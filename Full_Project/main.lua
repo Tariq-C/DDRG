@@ -1,39 +1,31 @@
-HeroGen = require("generators.heroGenerator")
-Enemy   = require("entities.enemy")
-Battle  = require('events.battle')
-
-
+local Dungeon = require("dungeon.dungeon")
 
 function Main()
     
-    -- First we are going to make a hero
-    local heroGenerator = HeroGen:new()
-    local hero = heroGenerator:SummonHero(1)
+    -- Make a dungeon
+    local dungeon = Dungeon:new()
 
-    print (hero:printStats())
+    -- Summon a hero
+    dungeon:SummonHero()
+    dungeon:SummonHero()
 
-    local battle_counter = 0
-    while (hero:isAlive()) do
-        Fight(hero)
-        battle_counter = battle_counter + 1
+    -- Run Game
+
+    local turnCounter = 0
+
+    while dungeon:isHero() and not dungeon:completed() do
+        
+        dungeon:update()
+
+        if (turnCounter % 50 == 0) then 
+            dungeon:printDungeon(turnCounter)
+        end
+        turnCounter = turnCounter + 1
+
     end
+    
+    dungeon:climbSummary()
 
-    hero:defeatMessage()
 end 
-
--- return 0 if enemy wins
--- return 1 if hero wins
-function Fight(hero)
-    local battle = Battle:new()
-    battle:resolve(hero)
-end
-
-function SpawnEnemy()
-    return Enemy:new()
-end
-
-
-
-
 
 Main()
