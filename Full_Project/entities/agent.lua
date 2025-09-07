@@ -1,12 +1,15 @@
 local Agent = {}
 Agent.__index = Agent
 
+Party = require("groups.party")
+
 function Agent:new(name)
     local self = setmetatable({}, Agent)
     self.name = name or "Name"
     self.stats = Agent:generateArray()
     self.currentHp = self.stats["vitality"]
     self.alive = true
+    self.id = 0
     return self
 end
 
@@ -17,8 +20,13 @@ function Agent:printStats()
     end
 end
 
-function Agent:printStatus()
-    print (self.name .. "is at " .. self.currentHp)
+function Agent:printSummary(index)
+
+    if (self.alive) then
+        print (self.name .." ["..index.."]".. " is  alive with " .. self.currentHp .. " hp")
+    else 
+        print (self.name .." ["..index.."]".. " has been slain")
+    end
 end
 
 function Agent:generateArray()
@@ -35,9 +43,11 @@ function Agent:determineAction()
     return "attack"
 end
 
-function Agent:attack()
+-- Currently Targets the lowest HP enemy
+function Agent:attack(party)
+    local target = party.lowest_HP_index
     local dmg = self.stats["attack"]
-    return dmg
+    return {dmg,target}
 end
 
 function Agent:recieveDmg(dmg)
@@ -47,7 +57,7 @@ function Agent:recieveDmg(dmg)
         totaldmg = 1
     end
     self.currentHp = self.currentHp - totaldmg
-    if self.currentHp < 0 then 
+    if self.currentHp <= 0 then 
         self.alive = false
     end
 end
@@ -57,7 +67,7 @@ function Agent:isAlive()
 end
 
 function Agent:isTurn(turnCounter)
-    local true_speed = 10-self.stats["speed"]
+    local true_speed = 100-self.stats["speed"]
     if (turnCounter % true_speed == 0) then
         return true
     else
@@ -65,5 +75,12 @@ function Agent:isTurn(turnCounter)
     end
 end
 
+function Agent:getStat(stat)
+    return self.stats[stat]
+end
+
+function Agent:getCurrentHP()
+    return self.currentHp
+end
 
 return Agent
