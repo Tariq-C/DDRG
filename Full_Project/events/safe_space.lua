@@ -15,11 +15,17 @@ function SS:init()
     self.options = {}
     self.options['short_rest'] = true
     self.event_exp = 1
+    self.short_rest_length = 100
+    self.partyStatus = "Short Resting"
 end
 
 -- Change to accomodate party system
 function SS:resolve(party)
-    party:shortRest()
+    if (party:inShortRest()) then
+        party:shortRest()
+    elseif (party:willShortRest()) then     
+        party:shortRest(self.short_rest_length)
+    end
     party:DistributeExperience(self.event_exp)
     return true
 end

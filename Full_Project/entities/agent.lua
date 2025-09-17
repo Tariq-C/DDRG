@@ -83,4 +83,11 @@ function Agent:getCurrentHP()
     return self.currentHp
 end
 
+function Agent:setBaseStat(stat, value, potential)
+    self.baseStat[stat]         = value
+    self.basePotential[stat]    = potential
+end
+
+
+
 return Agent

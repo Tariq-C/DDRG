@@ -18,17 +18,59 @@ function HP:init()
     self.currentFloor       = 0
     self.currentEvent       = 1
     self.inCity             = 1
+    self.inShortRestBool    = false
+    self.shortRestLength    = 0
+    self.partyStatus        = 'Summoned'
 end
 
-function HP:shortRest()
-    for i,member in ipairs(self.members) do
-        if (member:canShortRest()) then
-            member:short_rest()
+
+-- For Now we will use democracy to determine if the party will short rest
+function HP:willShortRest()
+    local passCount = #self.members / 2
+    local wantToRestCount = 0
+    for i, member in ipairs(self.members) do 
+        if (member:wantToShortRest()) then
+            wantToRestCount = wantToRestCount + 1
         end
+    end
+
+    if (wantToRestCount > passCount) then
+        return true
+    else
+        return false
+    end
+end
+
+-- Returns whether the party is currently resting
+function HP:inShortRest()
+    return self.inShortRestBool
+end
+
+-- If not resting it will start the rest
+-- If resting and no more turns available then end rest and heal
+-- If resting then count down
+function HP:shortRest(InitialRestLength)
+    self:updatePartyStatus("Short Resting")
+    if (not self:inShortRest()) then
+        self.shortRestLength = InitialRestLength - 1
+        self.inShortRestBool = true
+        return false
+    elseif (self:inShortRest() and self.shortRestLength == 0) then
+        self.inShortRestBool = false
+        for i,member in ipairs(self.members) do
+            if (member:canShortRest()) then
+                member:short_rest()
+            end
+        end
+        return true
+    elseif (self:inShortRest()) then
+        self.shortRestLength = self.shortRestLength - 1
+        return false
     end
 end
 
 function HP:longRest()
+    self:updatePartyStatus("Long Resting")
     for i,member in ipairs(self.members) do
         member:longRest()
     end
@@ -42,6 +84,7 @@ function HP:DistributeExperience(experience)
 end
 
 function HP:ascend()
+    self:updatePartyStatus("Ascending to "..self.currentFloor + 1)
     self.currentFloor = self.currentFloor + 1
     for i,member in ipairs(self.members) do
         member:recordFloor(self.currentFloor)
@@ -51,6 +94,7 @@ function HP:ascend()
 end
 
 function HP:nextEvent()
+    self:updatePartyStatus("Moving through dungoen floor")
     self.currentEvent = self.currentEvent + 1
     return self.currentEvent
 end
@@ -58,20 +102,22 @@ end
 -- Currently set to stay out as long as there are
 -- short rests available and hp is over 50%
 function HP:ReturnToCity()
+    self:updatePartyStatus("Returning to City")
     self.currentFloor = 0
     self.currentEvent = 1 
     self.inCity = true
 end
 
 function HP:ReturnDebate()
+    
+    self:updatePartyStatus("Debating Returning to City")
     local low = 0
     local high = 0
     
     for i,member in ipairs(self.members) do
         local mem_avg_hp = member:getCurrentHP() / member.stats['vitality']
-        print (mem_avg_hp)
 
-        if (mem_avg_hp > 0.8) then 
+        if (mem_avg_hp > 0.5) then 
             high = high + 1
         else
             low = low + 1
@@ -86,13 +132,14 @@ function HP:ReturnDebate()
 end
 
 function HP:ReturnToDungeon()
+    self:updatePartyStatus("Returning to Dungeon")
     self.currentFloor = 1
     self.inCity = false
 end
 -- Determine which member will do the skill check
 -- Currently set to highest value, but will update to personality based later
 function HP:attemptSkillCheck(stat, remaining_value)
-
+    self:updatePartyStatus("Attempting Skill Check")
     local highest_skill = 1
     local highest_index = 1
     for i,member in ipairs(self.members) do 
@@ -124,4 +171,17 @@ function HP:printSummary()
     end
 
 end
+
+function HP:updatePartyStatus(value)
+    self.partyStatus = value
+end
+
+function HP:getPartyStatus()
+    return self.partyStatus
+end
+
+function HP:battleUpdate()
+    self.partyStatus = "Currently in Battle"
+end
+
 return HP

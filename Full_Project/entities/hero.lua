@@ -2,9 +2,18 @@ local Agent = require("entities.agent")
 local Hero = setmetatable({}, {__index = Agent})
 Hero.__index = Hero
 
-function Hero:new(id)
+-- We are going to define the Hero Stats Below
+--
+-- Base Stats
+-- Strength
+-- Agility
+-- Constituation
+-- Wisdom
+-- Charisma
+
+function Hero:new(id , name)
     local self = setmetatable({}, Hero)
-    self.name = "John"
+    self.name = name or "John"
     self.level = 1
     self.currentExp    = 0
     self.nextLevelExp = 100 * (self.level ^ 2.2)
@@ -56,6 +65,15 @@ function Hero:attemptSkillCheck(skill, value)
     else 
         return 0
     end
+end
+
+function Hero:wantToShortRest()
+    if self:canShortRest() or self.stats['vitality'] * 2 / 3 > self.currentHp then
+        return true
+    else
+        return false
+    end
+
 end
 
 -- TODO: Make short rest decision wilder
@@ -111,5 +129,6 @@ function Hero:printSummary()
     "\t Total HP : ".. self.stats['vitality']
     )
 end
+
 
 return Hero

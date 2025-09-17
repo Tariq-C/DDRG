@@ -13,6 +13,7 @@ function Dungeon:new()
     local self = setmetatable({}, Dungeon)
     self.parties      = {}
     self.dungeon      = {}
+    self.layout       = {}
     self.cities       = {}
     self:init(9)
     self.turnCounter = 0
@@ -24,11 +25,12 @@ function Dungeon:init(num_floors)
     self.cities[1] = City:new(0)
     for i = 1, num_floors, 1 do
         self.dungeon[i] = Floor:new(i)
+        self.layout[i] = self.dungeon[i]:getNumEvents()
     end
 end
 
-function Dungeon:SummonHero()
-    local hero = Hero:new(0)
+function Dungeon:SummonHero(name)
+    local hero = Hero:new(0,name)
     local party = Hero_Party:new(hero)
     hero:printSummary()
     party:printSummary()
@@ -48,8 +50,10 @@ function Dungeon:update()
     for i,party in ipairs(self.parties) do
         local floor = party:getCurrentFloor()
         if (floor == 0) then
+            print("\n"..party.name .." In City")
             self.cities[1]:Rest(party)
         elseif (floor < 10) then 
+            print("\n"..party.name.." on Floor "..party:getCurrentFloor().." Event "..party:getCurrentEvent())
             self.dungeon[floor]:explore(party)
         else
             self.complete = true
@@ -58,7 +62,7 @@ function Dungeon:update()
 end
 
 function Dungeon:climbSummary()
-    print ("Dungeon Summary : "..
+    print ("\n\n\t\t Dungeon Defeated\n\nDungeon Summary : "..
         "\n\tNumber of Floors : ".. #self.dungeon..
         "\n\tTotal Turns : ".. self.turnCounter
     )
@@ -80,6 +84,14 @@ function Dungeon:isHero()
         end
     end
     return false
+end
+
+function Dungeon:getParties()
+    return self.parties
+end
+
+function Dungeon:getDungeon()
+    return self.layout
 end
 
 return Dungeon

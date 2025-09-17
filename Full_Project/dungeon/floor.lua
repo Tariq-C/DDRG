@@ -48,7 +48,6 @@ end
 function Floor:explore(party)
 
     self.stats['attempts'] = self.stats['attempts'] + 1
-    party:printSummary()
     local event_index = party:getCurrentEvent()
     -- If over the last event 
     if (event_index > #self.events) then
@@ -74,6 +73,10 @@ end
 
 function Floor:getStatus()
     return self.status
+end
+
+function Floor:getNumEvents()
+    return #self.events
 end
 
 return Floor
