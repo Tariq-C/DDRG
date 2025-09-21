@@ -1,0 +1,14 @@
+The party system in the game is going be quite robust as this is the key to the social aspect of the game. 
+
+Every hero in the game is always in a party. This allows all functions in the game to be done via a party system and generalization doesn't impact anything if the party only has a single member
+
+
+Currently the plan for the hero party system is that hero parties will be determined when a hero goes into the adventuring guilds found in every city. These guilds will provide missions for heros to take on and each mission will have a difficulty rating
+
+Heroes who are in the city and currently not in a party will be given the opportunity to join a party assignment queue where they will be added to a party in relation to their strength and relationship
+
+Hero relationships will be updated when the heros return the the city and complete their quest.
+
+This means that the party system is fairly tied to the quests that the hero takes on and allows me to update the party size for each of the different quests that are available. 
+
+Please reference the quest system doc to better understand what goes into making a quest

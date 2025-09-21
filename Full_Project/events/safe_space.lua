@@ -15,7 +15,7 @@ function SS:init()
     self.options = {}
     self.options['short_rest'] = true
     self.event_exp = 1
-    self.short_rest_length = 100
+    self.short_rest_length = 10
     self.partyStatus = "Short Resting"
 end
 

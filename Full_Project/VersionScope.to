@@ -1,46 +1,22 @@
 This is version 3 of this game. To keep track of check points so I am not overwhelmed trying to make the final project
 
 Here are the features to implement in this version:
-1. Party of sizes between 1 and 4
-    a. Add ability to merge parties
-    b. Add ability to split parties
+1. Party Manager for merging parties and splitting them - Not to implement but to add functionality
+    a. Add ability to merge parties - Done
+    b. Add ability to split parties - Done
 
-2. Hero Action Economy
-    a. Create Action Class
-        i. Create Single Target Class
-        ii. Create Party Target Class
 
-    b. Add "Choose Acion Function to Agent Class"
-        i.  For now just choose randomly between the options that can be done
+2. Create Basic UI for the Main Menu and the Main Screen - Done
 
-    c. Create Action Database (Simple)
-        i.  Add Attack  Action
-        ii. Add Block   Action
+3. Expand Hero Stats - Done
+    a. Check Lore Hero Stats - Done
+    
+4. Create a hero summoner class 
+    a. Handles the randomized hero name collector
+    b. Handles the distribution of stats and potentials
+    c. Allows for looping of names if that many are spawned
 
-    d. Create hero action economy stats
-        i.   Stamina for all actions
-        ii.  Mana for magical actions
-        iii. Aura for Qi actions
-        iv.  Faith for Blessing actions
-        v.   Spirit for Natural actions
-
-3. Hero Ability System
-    a. Create Ability Database
-        i.      Ability Name
-        ii.     Stat  pre-req
-        iii.    Ability pre-req
-        iv.     Ability actions
-        v.      Ability level
-
-    b. Create Re-Class option at City
-        i. Reclass will be based on class level
-
-4. Create Basic UI for the Main Menu and the Main Screen - Done
-
-5. Sepeate Hero Stats
-    a. Create Potential Stats (Normalized Between 0 - 1)
-        i. Per Static Class
-    b. Create Static Level Stats (Base + Potential * 1.3 ^ level)
-        i. 
-    c. Create Dynamic Stats
-        i.
+5. Update Dungeon Battle
+    a. Create a new event called single party raid, and pass in the event
+    b. Create a new mob battle class and allow for multiple encounters per day
+    

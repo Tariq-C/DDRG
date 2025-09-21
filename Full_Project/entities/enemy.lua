@@ -5,8 +5,9 @@ Enemy.__index = Enemy
 function Enemy:new(name)
     local self = setmetatable({}, Enemy)
     self.name = name or "Globin"
-    self.stats = Enemy:generateArray()
-    self.currentHp = self.stats["vitality"]
+    self.stats = {}
+    self.stats.base = Enemy:generateArray()
+    self.currentHp = self.stats.base["vitality"]
     self.alive = true
     self.exp    = 1
     return self
@@ -14,10 +15,9 @@ end
 
 function Enemy:generateArray()
     local array = {
-        ["attack"] = math.random(0,5),
-        ["defence"] = math.random(0,1),
+        ["strength"] = math.random(0,5),
         ["vitality"] = math.random(10,20),
-        ["speed"] = math.random(0,3)
+        ["agility"] = math.random(0,3)
     }
     return array
 end

@@ -1,6 +1,8 @@
 
 
 function love.load()
+    seed = os.time()
+    math.randomseed(seed)
     Dungeon = require("dungeon.dungeon")
     dungeon = Dungeon:new()
     turnCounter = 0
@@ -11,11 +13,7 @@ function love.load()
 
         -- Progress bar dimensions
     barX, barY, barW, barH = 50, 100, 700, 20
-    dungeon:SummonHero("Tariq")    
-    dungeon:SummonHero("Rem")
-    dungeon:SummonHero("Mia")
-
-
+    dungeon:SummonHero(5)
 
 end
 
@@ -59,8 +57,8 @@ function love.draw()
 
         -- Draw heroes as colored rectangles on the bar 
         -- Text summary of hero progress below the bar
-    local textY = barY + barH + 20
-    local colour = {{0,0,1},{0,1,0},{1,1,0},{1,0,0}}
+    local textY = barY + barH + 30
+    local colour = {{0,0,1},{0,1,0},{1,1,0},{1,0,0},{1,1,1},{0,1,1}}
     for i,party in ipairs(dungeon:getParties()) do    -- Draw heroes on the bar
         local hero = party:getMember(1)
         local hero_f = party:getCurrentFloor()
@@ -81,7 +79,7 @@ function love.draw()
 
         local progressPercent = math.floor(progress * 100)
         local summary = string.format("Floor %d Event %d - Progress: %d%% ||| Hp: %s / %s",
-            hero_f, hero_e, progressPercent, hero.currentHp, hero.stats["vitality"])
+            hero_f, hero_e, progressPercent, hero:getCurrentHp(), hero:getMaxHp())
         local prefix = string.format("Level %s - %s - Status %s", hero.level, hero.name, party:getPartyStatus())
 
         love.graphics.setColor(colour[i])

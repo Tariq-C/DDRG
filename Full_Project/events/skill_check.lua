@@ -17,7 +17,7 @@ function SC:init()
     self.type   = 'skill_check'
     self.status = "Active"
     self.completed = false
-    self.skill = "speed" -- TODO: Connect to dungeon generator
+    self.skill = "agility" -- TODO: Connect to dungeon generator
     self.value = math.random(5,25)      -- TODO: Connect to dungeon generator
     self.remaining_value = self.value
     self.cost  = 2       -- TODO: Connect to dungeon generator

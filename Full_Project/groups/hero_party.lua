@@ -115,7 +115,7 @@ function HP:ReturnDebate()
     local high = 0
     
     for i,member in ipairs(self.members) do
-        local mem_avg_hp = member:getCurrentHP() / member.stats['vitality']
+        local mem_avg_hp = member:getCurrentHp() / member:getMaxHp()
 
         if (mem_avg_hp > 0.5) then 
             high = high + 1
@@ -182,6 +182,32 @@ end
 
 function HP:battleUpdate()
     self.partyStatus = "Currently in Battle"
+end
+
+
+-- Returns the table containing all the heros
+function HP:getParty()
+    return self.members
+end
+
+-- Returns the number of members in the party
+function HP:getPartySize()
+    return #self.members
+end
+
+
+-- Returns the member if removed, returns nothing if failed
+function HP:removeMember(index)
+    if (self.members[index]) then
+        return table.remove(self.members,index)
+    end
+    return nil
+end
+
+
+-- Returns True if the member was added, returns false if not
+function HP:addMember(member)
+    table.insert(self.members, member)
 end
 
 return HP

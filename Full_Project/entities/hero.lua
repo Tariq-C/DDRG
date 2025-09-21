@@ -11,19 +11,21 @@ Hero.__index = Hero
 -- Wisdom
 -- Charisma
 
-function Hero:new(id , name)
-    local self = setmetatable({}, Hero)
-    self.name = name or "John"
-    self.level = 1
-    self.currentExp    = 0
-    self.nextLevelExp = 100 * (self.level ^ 2.2)
-    self.highestFloor = 0
-    self.stats = Hero:generateArray()
-    self.currentHp = self.stats["vitality"]
-    self.currentStamina = self.stats["stamina"]
-    self.remainingShortRest = self.stats['shortRestCount']
-    self.alive = true
-    self.id = id
+function Hero:new(prefab)
+    local name              = prefab["Name"] or "John"
+    local self              = setmetatable({}, Hero)
+    self.name               = name
+    self.stats              = {}
+    self.level              = 1
+    self.currentExp         = 0
+    self.nextLevelExp       = 100 * (self.level ^ 2.2)
+    self.highestFloor       = 0
+    self.currentHp          = 0
+    self.maxHp              = 0
+    self.currentStamina     = 0
+    self.remainingShortRest = 0
+    self.alive              = true
+    self.id                 = id
     return self
 end
 
@@ -31,24 +33,6 @@ function Hero:recordFloor(floor_number)
     if (self.highestFloor < floor_number) then
         self.highestFloor = floor_number
     end
-end
-
-function Hero:generateArray()
-    local array = {
-        ["attack"] = math.random(5,10),
-        ["defence"] = math.random(0,5),
-        ["vitality"] = math.random(50,100),
-        ["speed"] = math.random(0,5),
-        ["stamina"] = math.random(10,25),
-        ['shortRestCount'] = math.random(1,4)
-    }
-    return array
-end
-
-function Hero:defeatMessage()
-    print ("Hero " .. self.name .. " defeated")
-    print ("Final Hero Level : "..self.level)
-    print ("Monsters Defeated : ".. self.monsterCount)
 end
 
 function Hero:checkStamina(stamina_cost)
@@ -59,7 +43,7 @@ function Hero:checkStamina(stamina_cost)
 end
 
 function Hero:attemptSkillCheck(skill, value)
-    local remainder = value - self.stats[skill]
+    local remainder = value - self.stats.base[skill]
     if (remainder > 0) then
         return remainder
     else 
@@ -68,7 +52,7 @@ function Hero:attemptSkillCheck(skill, value)
 end
 
 function Hero:wantToShortRest()
-    if self:canShortRest() or self.stats['vitality'] * 2 / 3 > self.currentHp then
+    if self:canShortRest() or self.maxHp * 2 / 3 > self.currentHp then
         return true
     else
         return false
@@ -87,21 +71,17 @@ end
 -- TODO: Change Values to reflect expanded stat blocks
 function Hero:short_rest()
     self.remainingShortRest = self.remainingShortRest - 1
-    self.currentStamina = self.currentStamina + math.ceil(self.stats['stamina'] / 10)
-    if (self.currentStamina > self.stats['stamina']) then 
-        self.currentStamina = self.stats['stamina']
-    end
-    self.currentHp      = self.currentHp + math.ceil(self.stats['vitality'] / 10)
-    if (self.currentHp > self.stats['stamina']) then 
-        self.currentHp = self.stats['vitality']
+    self.currentHp      = self.currentHp + math.ceil(self.maxHp / 10)
+    if (self.currentHp > self.maxHp) then 
+        self.currentHp = self.maxHp
     end
     return true
 end
 
 function Hero:longRest()
-    self.currentHp = self.stats['vitality']
-    self.currentStamina = self.stats['stamina']
-    self.remainingShortRest = self.stats['shortRestCount']
+    self.currentHp = self.maxHp
+    self.currentStamina = self.stats.base['vitality']
+    self.remainingShortRest = self.stats.base['vitality']
 end
 
 function Hero:obtainExp(exp)
@@ -114,21 +94,31 @@ end
 function Hero:levelUp()
     self.level = self.level + 1
     self.nextLevelExp = 100 * (self.level ^ 2.2)
-    
-    self.stats['attack'] = self.stats['attack']       + math.random(0,2)
-    self.stats["defence"] = self.stats["defence"]     + math.random(0,2)
-    self.stats["vitality"] = self.stats["vitality"]   + math.random(5,15)
-    self.stats["speed"] = self.stats["speed"]         + math.random(0,5)
+    for stat, value in pairs(self.stats.base) do
+        
+        local init_stat_ratio   = self.init_stats.base[stat] / 10
+        local max_value         = 65536
+        local potential_exp     = 1 + 4*self.stats.potential[stat]
+        local level_ratio       = self.level / 250
+
+        local new_value = (init_stat_ratio * max_value * (1 - ( 1 - level_ratio ^ potential_exp)))
+        self.stats.base[stat] = math.floor(new_value)
+    end   
+    self.maxHp = math.floor(self.stats.base["vitality"] * 10)
 
 end
 
-function Hero:printSummary()
-    print(self.name .. " summary :"..
-    "\t Level : ".. self.level..
-    "\t Current HP : ".. self.currentHp..
-    "\t Total HP : ".. self.stats['vitality']
-    )
+function Hero:setInitialStats(stat_array)
+    self.stats = stat_array
+    self.init_stats = stat_array
+    self.maxHp              = self.init_stats.base["vitality"] * 10
+    self.currentHp          = self.maxHp
+    self.currentStamina     = self.init_stats.base["vitality"]
+    self.remainingShortRest = self.init_stats.base['vitality']
 end
 
+function Hero:getMaxHp()
+   return self.maxHp
+end
 
 return Hero
