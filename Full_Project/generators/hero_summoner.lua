@@ -7,9 +7,9 @@ local Hero = require("entities.hero")
 
 function HS:new()
     local self = setmetatable({}, HS)
-    self.hero_prefabs = require("database.hero_prefabs")
-    self.hero_template = require("database.hero_template")
-    self.potential_table = require("database.rarity_to_stat")
+    self.hero_prefabs = require("database.hero.prefabs")
+    self.hero_template = require("database.hero.template")
+    self.potential_table = require("database.hero.rarity_to_stat")
     self.summonOrder = {}
     self:generate_summon_order()
     self.summonIndex = math.random(1,#self.summonOrder)

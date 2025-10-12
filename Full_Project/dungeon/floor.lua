@@ -6,12 +6,14 @@ local skill_check = require('events.skill_check')
 local safe_space = require('events.safe_space')
 
 function Floor:new(floor_num)
-    local self = setmetatable({}, Floor)
-    self.stats = {}
-    self.stats['attempts'] = 0
-    self.events = {}
-    self.floor = floor_num
-    self.status = "Undiscovered"
+    local self              = setmetatable({}, Floor)
+    self.stats              = {}
+    self.stats['attempts']  = 0
+    self.events             = {}
+    self.floor              = floor_num
+    self.status             = "Undiscovered"
+    self.layers             = {}
+    self.palette            = {}
     self:init(floor_num)
     return self
 end
@@ -23,7 +25,7 @@ function Floor:init(floor_num)
         rand = 1
     end
 
-    local floor_template = require("database.floor_template")
+    local floor_template = require("database.dungeon.floor_template")
     
     print ('Constructing Floor '.. floor_num .. " Version "..rand )
 
@@ -40,6 +42,7 @@ function Floor:init(floor_num)
         end
         table.insert(self.events, push)
     end
+
 end
 
 -- Go through each of the events in the floor

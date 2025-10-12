@@ -35,17 +35,11 @@ In the future I would like to see these features
         ii. Body Shape
         iii. Eye Colour
 
-<<<<<<< Updated upstream
-8. 
-=======
-8. Ability Economy I 
-    a. create basic ability class
-    b. add basic actions
-    c. create a move choice function in hero class
-    d. create a storage of moves
+8. God Class
+    a. Blessed Heroes List
+    b. God Points
+    c. 
 
-9. Feature Economy I
-    a. create feature class
-    b. add basic features
+9. Player Class (Child of God Class)
 
->>>>>>> Stashed changes
+

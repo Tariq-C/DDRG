@@ -1,0 +1,34 @@
+Currently we are trying to keep an aspect ratio of 16:9 as this is the standard resolution of most monitors. 
+
+
+## Panel Sizes
+
+This means that with our current double layer of 16:9, we will need to double the width of the screen. This means adding 2 panes to either side with a total width of 320. In addition we will need to add a pane at the top and the bottom for controls. This means that the sides and the top need to be updated by n.
+
+So to get the sizes of each of the panes we will need to: 
+
+Left Pane: 320:540
+Right Pane: 320:
+This will make the resulting dimensions
+
+Width:  320+320+320     = 960
+Height: 180+180+60+60   = 540
+
+960:540 = 16:9
+
+
+## Panel Positions
+
+Since we are going for a layout like this:
+
+- = side
+H = bun
+0 = main
+
+----HHHH----
+----0000----
+----0000----
+----HHHH----
+
+This means for the sake of drawing on the screen I need to plan out where everything lies tied to a ratio of the total size
+

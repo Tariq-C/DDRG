@@ -1,0 +1,45 @@
+In this document, we will set the standards for the sizes of each of the images that will be assets
+
+
+Here is a simple visualization
+
+            _________________________________________
+            |                                       |
+Sky     ->  |                                       |
+            |_____----^^^----_____                  |
+Back    ->  |                     ******------______|
+            |##      ###   ##    ###   ###    ###   |
+            |###    ##### ####  ##### #####  ##### #|
+Mid     ->  |!!      !!!   !!    !!!   !!!    !!!   |
+Fore    ->  |!ooo    !!ooo !! oo !!!  oo!!   ooo!   |
+            |^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^|
+            |         _______________________       |
+Game    ->  |        |_____|_____|_____|_____|      |
+            |        |_____|_____|_____|_____|      |
+Grid    ->  |        |_____|_____|_____|_____|      |
+            |        |_____|_____|_____|_____|      |
+            |        |_____|_____|_____|_____|      |
+            |                                       |
+            _________________________________________
+
+Floor Art will be set to: 
+
+Sky     : 320 x 360
+Back    : 320 x 360
+Mid     : 320 x 360
+Fore    : 320 x 360
+Game    : 320 x 360
+Tile    : 320 x 360
+
+This is because all the art is the same size in terms of filling the top 40% of the screen with a 16:9 ratio
+
+
+Here are the tones to recolour from darkest to lightest:
+
+in RGB
+1 : 45,45,45
+2 : 85,85,85
+3 : 125,125,125
+4 : 165,165,165
+5 : 215,215,215
+6 : 255,255,255

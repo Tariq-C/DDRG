@@ -1,0 +1,14 @@
+This document will highlight the design philosophy when it comes to creating the backgrounds for our Game
+
+First we define the feeling that we want while the players are making their way through the tower
+
+We want to start with the player feeling like they are a god in a small world. The heroes show up and start making their way up the tower. The first part of the game should feel like the player is exploring a new world and learning what their heroes know. 
+
+This combination of innocence, gentleness, is supposed to feel like the warm embrace of a fuzzy blanket. The god can watch the heroes levelling up and achieving new things,running into different meeting the first elite enemy, then the going higher until they run into the boss. 
+
+At this point the player should only have the ability to gather god points to either bless another hero. At this point in the tower the player has a monopoly in the blessing of heroes so they will be gathering new heroes. They will also have a clock indicator on the top right with a countdown to when the next hero summoning is. To keep the player intimate with their heroes we will keep the total number of heroes capped at 8 until the party system is unlocked. Then 8 max parties. Which will give the player 32 heroes total. 
+
+At this point, they know that the tower has been going on before they were summoned, and that they can only climb the tower at the rate of their furthest blessed hero. They will be there to watch as the hero summoning happens on the ground floor. When the summoning happens, the player will go to the first city and find heroes in the tavern. 
+
+They will be automatically be highlighted a hero with low potential and medium stats so they can feel like they chose 
+
