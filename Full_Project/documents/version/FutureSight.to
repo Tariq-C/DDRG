@@ -1,0 +1,45 @@
+In the future I would like to see these features
+
+1. Achievement I    : Create the achievement system
+2. Ability I        : Expand Ability DB to 20 actions
+3. Feature I        : Expand Feature DB to 50 passives
+4. Guild I          : Create Mission System and Party Integration
+    a. Create Quest generation with these values
+        i.      Difficulty Class    : A number for now
+        ii.     Type                : Main, Slayer, Collection, Hidden
+        iii.    Reward System       : EXP, Guild EXP, Money
+        iv.     Status              : Completed, In Progress, available
+        v.      Attempt Count       : a number for now
+        vi.     Mission ID          : For storing in the hero_party
+        vii.    Requirements        : Party Adventurer Rank Minimum
+5. Social I           : Create social system
+    a. Create Hero relationship tracker
+        i. After the completion of a mission increase relationship meter for each other hero
+        ii. Values can go from 1 to -1
+        iii. Add relationship to party generation preferences
+    b. Create social interaction in the guild
+        i. Create an idle social event between 2 heroes if a social random event takes place
+6. Enemies I : Expand Enemy types and data
+    a. Update Enemy Database to 3 types
+        i.      Goblin
+        ii.     Slime
+        iii.    Cultist
+    b. Update Enemy Stats
+        i. Use same format as hero base stats
+        ii. Use same format as energy stats
+        iii. Use same format as personality stats
+
+7. Hero Graphics I
+    a. Include 3 prefabs for these qualities
+        i. Hair Style
+        ii. Body Shape
+        iii. Eye Colour
+
+8. God Class
+    a. Blessed Heroes List
+    b. God Points
+    c. 
+
+9. Player Class (Child of God Class)
+
+

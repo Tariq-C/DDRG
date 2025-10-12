@@ -1,0 +1,326 @@
+local Colours = {
+    -- Greens (32)
+    green_forest       = {34, 139, 34},
+    green_lime         = {50, 205, 50},
+    green_olive        = {107, 142, 35},
+    green_sea          = {46, 139, 87},
+    green_moss         = {138, 154, 91},
+    green_spring       = {0, 255, 127},
+    green_dark         = {0, 100, 0},
+    green_pale         = {152, 251, 152},
+    green_jungle       = {41, 171, 135},
+    green_meadow       = {124, 252, 0},
+    green_chartreuse   = {127, 255, 0},
+    green_hunter       = {53, 94, 59},
+    green_mint         = {189, 252, 201},
+    green_emerald      = {80, 200, 120},
+    green_kale         = {86, 130, 3},
+    green_pea          = {134, 168, 87},
+    green_sapling      = {112, 179, 72},
+    green_fern         = {79, 121, 66},
+    green_jade         = {0, 168, 107},
+    green_seaglass     = {127, 255, 212},
+    green_pine         = {1, 121, 111},
+    green_shamrock     = {0, 158, 96},
+    green_basil        = {85, 107, 47},
+    green_avocado      = {86, 130, 3},
+    green_mossy        = {99, 111, 76},
+    green_algae        = {143, 188, 143},
+    green_celadon      = {172, 225, 175},
+    green_honeydew     = {240, 255, 240},
+    green_laurel       = {169, 186, 157},
+    green_leaf         = {50, 205, 50},
+    green_sap          = {141, 182, 0},
+    green_lush         = {0, 128, 0},
+
+    -- Blues (32)
+    blue_sky           = {135, 206, 235},
+    blue_deep_sky      = {0, 191, 255},
+    blue_steel         = {70, 130, 180},
+    blue_navy          = {0, 0, 128},
+    blue_light         = {173, 216, 230},
+    blue_dodger        = {30, 144, 255},
+    blue_cornflower    = {100, 149, 237},
+    blue_midnight      = {25, 25, 112},
+    blue_teal          = {0, 128, 128},
+    blue_aqua          = {0, 255, 255},
+    blue_cyan          = {0, 255, 255},
+    blue_ice           = {173, 216, 230},
+    blue_denim         = {21, 96, 189},
+    blue_cobalt        = {61, 89, 171},
+    blue_periwinkle    = {204, 204, 255},
+    blue_turquoise     = {64, 224, 208},
+    blue_marine        = {0, 128, 255},
+    blue_powder        = {176, 224, 230},
+    blue_sapphire      = {15, 82, 186},
+    blue_cerulean      = {42, 82, 190},
+    blue_electric      = {44, 117, 255},
+    blue_azure         = {0, 127, 255},
+    blue_peacock       = {51, 161, 201},
+    blue_iceberg       = {113, 166, 210},
+    blue_pale          = {175, 238, 238},
+    blue_fjord         = {78, 129, 164},
+    blue_cyan_light    = {224, 255, 255},
+    blue_ocean         = {28, 107, 160},
+    blue_mid           = {0, 0, 205},
+    blue_sky_light     = {135, 206, 250},
+    blue_dusk          = {72, 61, 139},
+    blue_grey          = {119, 136, 153},
+    blue_prussian      = {0, 49, 83},
+
+    -- Reds (32)
+    red_fire           = {255, 69, 0},
+    red_crimson        = {220, 20, 60},
+    red_dark           = {139, 0, 0},
+    red_tomato         = {255, 99, 71},
+    red_light_coral    = {240, 128, 128},
+    red_indian         = {205, 92, 92},
+    red_brick          = {178, 34, 34},
+    red_scarlet        = {255, 36, 0},
+    red_ruby           = {224, 17, 95},
+    red_maroon         = {128, 0, 0},
+    red_cherry         = {222, 49, 99},
+    red_rose           = {255, 0, 127},
+    red_burgundy       = {128, 0, 32},
+    red_carmine        = {150, 0, 24},
+    red_poppy          = {227, 0, 34},
+    red_coral_light    = {240, 128, 128},
+    red_garnet         = {115, 0, 0},
+    red_cinnabar       = {227, 66, 52},
+    red_blood          = {138, 3, 3},
+    red_rust           = {183, 65, 14},
+    red_pale           = {255, 192, 203},
+    red_peach          = {255, 218, 185},
+    red_salmon         = {250, 128, 114},
+    red_cerise         = {222, 49, 99},
+    red_brick_light    = {205, 92, 92},
+    red_clay           = {203, 65, 11},
+    red_magenta        = {255, 0, 255},
+    red_orchid         = {218, 112, 214},
+    red_flamingo       = {252, 142, 172},
+    red_candy          = {255, 105, 180},
+    red_raspberry      = {227, 11, 93},
+    red_blossom        = {255, 183, 197},
+
+    -- Yellows (32)
+    yellow_gold        = {255, 215, 0},
+    yellow_standard    = {255, 255, 0},
+    yellow_light       = {255, 255, 224},
+    yellow_khaki       = {240, 230, 140},
+    yellow_lemon       = {255, 250, 205},
+    yellow_dark_gold   = {184, 134, 11},
+    yellow_pale_gold   = {238, 232, 170},
+    yellow_amber       = {255, 191, 0},
+    yellow_mustard     = {255, 219, 88},
+    yellow_sun         = {255, 223, 0},
+    yellow_citrine     = {228, 208, 10},
+    yellow_butter      = {255, 253, 208},
+    yellow_flax        = {238, 220, 130},
+    yellow_saffron     = {244, 196, 48},
+    yellow_wheat       = {245, 222, 179},
+    yellow_light_mustard = {255, 239, 128},
+    yellow_maize       = {251, 236, 93},
+    yellow_gold_light  = {255, 239, 184},
+    yellow_lemon_light = {255, 250, 205},
+    yellow_pale        = {255, 255, 204},
+    yellow_beige       = {245, 245, 220},
+    yellow_light_khaki = {240, 230, 140},
+    yellow_sunshine    = {255, 255, 102},
+    yellow_canary      = {255, 239, 0},
+    yellow_buff        = {240, 220, 130},
+    yellow_light_amber = {255, 223, 127},
+    yellow_flax_light  = {238, 220, 130},
+    yellow_gold_dark   = {218, 165, 32},
+    yellow_ochre       = {204, 119, 34},
+    yellow_beige_light = {245, 245, 220},
+    yellow_sand        = {194, 178, 128},
+    yellow_honey       = {240, 220, 130},
+
+    -- Oranges (32)
+    orange_standard    = {255, 165, 0},
+    orange_dark        = {255, 140, 0},
+    orange_coral       = {255, 127, 80},
+    orange_tomato      = {255, 99, 71},
+    orange_carrot      = {237, 145, 33},
+    orange_pumpkin     = {255, 117, 24},
+    orange_persimmon   = {236, 88, 0},
+    orange_apricot     = {251, 206, 177},
+    orange_melon       = {253, 188, 180},
+    orange_mandarin    = {243, 122, 72},
+    orange_peach       = {255, 218, 185},
+    orange_light       = {255, 200, 150},
+    orange_burnt       = {204, 85, 0},
+    orange_clementine  = {243, 156, 18},
+    orange_marigold    = {234, 162, 33},
+    orange_dark_peach  = {255, 203, 164},
+    orange_amber       = {255, 191, 0},
+    orange_saffron     = {244, 196, 48},
+    orange_apricot_pale = {251, 206, 177},
+    orange_tangerine   = {242, 133, 0},
+    orange_bisque      = {255, 228, 196},
+    orange_cantaloupe  = {255, 214, 155},
+    orange_light_coral = {240, 128, 128},
+    orange_salmon      = {250, 128, 114},
+    orange_copper      = {184, 115, 51},
+    orange_bronze      = {205, 127, 50},
+    orange_peach_light = {255, 218, 185},
+    orange_sunset      = {252, 94, 3},
+    orange_fall        = {255, 140, 0},
+    orange_tawny       = {205, 87, 0},
+    orange_light_marigold = {234, 162, 33},
+    orange_caramel     = {255, 159, 85},
+
+    -- Purples (32)
+    purple_violet      = {238, 130, 238},
+    purple_standard    = {128, 0, 128},
+    purple_indigo      = {75, 0, 130},
+    purple_lavender    = {230, 230, 250},
+    purple_orchid      = {218, 112, 214},
+    purple_plum        = {221, 160, 221},
+    purple_magenta     = {255, 0, 255},
+    purple_amethyst    = {153, 102, 204},
+    purple_mauve       = {224, 176, 255},
+    purple_dark        = {102, 0, 102},
+    purple_heather     = {179, 158, 181},
+    purple_lilac       = {200, 162, 200},
+    purple_thistle     = {216, 191, 216},
+    purple_wisteria    = {201, 160, 220},
+    purple_hydrangea   = {141, 115, 207},
+    purple_iris        = {90, 79, 207},
+    purple_light       = {204, 153, 255},
+    purple_pastel      = {177, 156, 217},
+    purple_dusk        = {84, 61, 122},
+    purple_plum_dark   = {142, 69, 133},
+    purple_heavy       = {102, 0, 102},
+    purple_purple_red  = {143, 0, 255},
+    purple_wine        = {114, 47, 55},
+    purple_light_lilac = {200, 162, 200},
+    purple_orchid_light= {218, 112, 214},
+    purple_grape       = {111, 45, 168},
+    purple_violet_dark = {148, 0, 211},
+    purple_magenta_light = {255, 0, 255},
+    purple_bright      = {186, 85, 211},
+    purple_mauve_light = {224, 176, 255},
+    purple_amethyst_light = {153, 102, 204},
+    purple_pastel_light = {200, 162, 200},
+    purple_lavender_light = {230, 230, 250},
+
+    -- Browns (32)
+    brown_sienna       = {160, 82, 45},
+    brown_chocolate    = {210, 105, 30},
+    brown_peru         = {205, 133, 63},
+    brown_tan          = {210, 180, 140},
+    brown_burlywood    = {222, 184, 135},
+    brown_moccasin     = {255, 228, 181},
+    brown_wheat        = {245, 222, 179},
+    brown_sand         = {194, 178, 128},
+    brown_coffee       = {111, 78, 55},
+    brown_cedar        = {151, 105, 79},
+    brown_umber        = {99, 81, 71},
+    brown_caramel      = {193, 133, 64},
+    brown_hazelnut     = {133, 99, 99},
+    brown_rust         = {183, 65, 14},
+    brown_tawny        = {205, 87, 0},
+    brown_chestnut     = {149, 69, 53},
+    brown_maple        = {154, 93, 35},
+    brown_bark         = {101, 67, 33},
+    brown_fawn         = {229, 170, 112},
+    brown_saddle       = {139, 69, 19},
+    brown_mahogany     = {192, 64, 0},
+    brown_mocha        = {178, 119, 92},
+    brown_brick        = {178, 34, 34},
+    brown_beige        = {245, 245, 220},
+    brown_buff         = {240, 220, 130},
+    brown_light        = {222, 184, 135},
+    brown_umber_light  = {140, 120, 100},
+    brown_dark         = {101, 67, 33},
+    brown_tan_light    = {210, 180, 140},
+    brown_cocoa        = {210, 105, 30},
+    brown_sand_light   = {194, 178, 128},
+
+    -- Grays (32)
+    gray_black         = {0, 0, 0},
+    gray_dim           = {105, 105, 105},
+    gray_standard      = {128, 128, 128},
+    gray_dark          = {169, 169, 169},
+    gray_silver        = {192, 192, 192},
+    gray_light         = {211, 211, 211},
+    gray_gainsboro     = {220, 220, 220},
+    gray_white         = {255, 255, 255},
+    gray_charcoal      = {54, 69, 79},
+    gray_ash           = {178, 190, 181},
+    gray_slate         = {112, 128, 144},
+    gray_slate_light   = {176, 196, 222},
+    gray_cloud         = {205, 205, 205},
+    gray_iron          = {183, 183, 183},
+    gray_pewter        = {136, 145, 160},
+    gray_silver_light  = {192, 192, 192},
+    gray_mist          = {225, 225, 225},
+    gray_stone         = {143, 143, 143},
+    gray_fog           = {200, 200, 200},
+    gray_concrete      = {220, 220, 220},
+    gray_platinum      = {229, 228, 226},
+    gray_cloud_light   = {238, 238, 238},
+    gray_ash_light     = {200, 200, 200},
+    gray_slate_dark    = {112, 128, 144},
+    gray_charcoal_dark = {54, 69, 79},
+    gray_iron_dark     = {110, 110, 110},
+    gray_mist_light    = {230, 230, 230},
+    gray_fog_light     = {245, 245, 245},
+    gray_steel         = {176, 196, 222},
+    gray_pewter_light  = {180, 180, 180},
+    gray_concrete_light = {225, 225, 225},
+    gray_cloud_dark    = {169, 169, 169},
+    gray_charcoal_light = {105, 105, 105},
+}
+
+
+-- Open file for writing
+local file = io.open("palette.html", "w")
+
+-- Write basic HTML header
+file:write([[
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Colour Palette</title>
+<style>
+  body { font-family: sans-serif; background: #f0f0f0; }
+  .palette { display: flex; flex-wrap: wrap; }
+  .swatch {
+    width: 120px; height: 80px;
+    margin: 4px; border-radius: 6px;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    color: #000; font-size: 11px; font-weight: bold;
+    box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  }
+</style>
+</head>
+<body>
+<h1>Game Palette</h1>
+<div class="palette">
+]])
+
+-- Write swatches
+for name, rgb in pairs(Colours) do
+    local r, g, b = rgb[1], rgb[2], rgb[3]
+    local hex = string.format("#%02X%02X%02X", r, g, b)
+    file:write(string.format(
+        '<div class="swatch" style="background:%s; color:%s">%s<br>%s</div>\n',
+        hex,
+        (r*0.299 + g*0.587 + b*0.114 > 186) and "#000" or "#fff", -- contrast text color
+        name, hex
+    ))
+end
+
+-- Close HTML
+file:write([[
+</div>
+</body>
+</html>
+]])
+file:close()
+
+print("Palette written to palette.html – open it in your browser to view.")

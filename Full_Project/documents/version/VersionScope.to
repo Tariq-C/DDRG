@@ -1,0 +1,83 @@
+This is for version Delta of the game. This update will be known as the UI update
+
+In this update I will be creating the foundation of the game for future updates
+
+The tasks listed blow are to be included in this update:
+
+1. Hero Sprite generation - Done
+    a. Create 10 greyscale hero hairstyles  (Go Wild)
+        i.      Bald            - Done
+        ii.     Preacher Cut    - Done
+        iii.    Buzz Cut        - Done
+        iv.     Mohawk          - Done
+        v.      Mullet          - Done
+        vi.     Rebellious      - Done
+        vii.    Pony Tail       - Done
+        viii.   Long Curly      - Done
+        ix.     Long Straight   - Done
+        x.      Long Volumous   - Done
+
+    b. Create 10 greyscale hero clothes     (Just make clothes)
+        i.      Tunic               - Done
+        ii.     Robes               - Done
+        iii.    Half Breast         - Done
+        iv.     Hoodie              - Done
+        v.      Sweater             - Done
+        vi.     Tank                - Done
+        vii.    T-shirt             - Done
+        viii.   Chestplate          - Done
+        ix.     Cape and Leathers   - Done
+        x.      Suit                - Done
+        
+    c. Create 05 greyscale hero faces       (Skin tones)
+        i.      Blank   - Done
+        ii.     Wide    - Done
+        iii.    Small   - Done
+        iv.     Tall    - Done
+        v.      Sharp   - Done
+
+    d. Create 05 greyscale main-hand items
+        i.      Empty           - Done
+        ii.     Basic Sword     - Done
+        iii.    Basic Wand      - Done
+        iv.     Basic Bow       - Done
+        v.      Basic Axe       - Done
+
+    e. Create 05 greyscale off-hand items
+        i.      Empty           - Done
+        ii.     Basic_Shield    - Done
+        iii.    Basic_Crystal   - Done
+        iv.     Basic_Sword     - Done
+        v.      Basic_Totem     - Done
+
+2. Enemy Sprite generation
+    a. Create 10 Enemy (32x32)
+        i.      Slime               - Done
+        ii.     Goblin Pup          - Done
+        iii.    Goblin Juvenile     - Done
+        iv.     Goblin Packling     - Done
+        v.      Goblin Pack Scout   - Done
+        vi.     Cultist gray        - Done
+        vii.    Baby Parrot Dragon  - Done
+
+    b. Create 1 Mini Boss (64x64)
+        i. Goblin Pack Warrior      - Done
+
+    c. Create 1 Boss (128x128)
+        i. Goblin Pack Leader       - Done
+
+3. Create backgrounds - Done
+    a. Create 3 Biomes
+        i.      Forest      - Done
+        ii.     Desert      - Done
+        iii.    Mountain    - Done
+
+4. Create general UI
+    a. Dungeon Map - Done
+        i. A series of buttons to update floor map
+    b. Floor Map - Done
+        i. A series of buttons to change main screen space
+    c. Main Space Simulation - Done
+        i. A large open UI for showing hero locations and actions
+    d. Static God UI - Done
+        i. A static ui on the right to show Universal values

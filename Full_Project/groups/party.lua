@@ -6,7 +6,7 @@ function Party:battleUpdate()
     local lowIndex  = 1
     for i,member in ipairs(self.members) do
         if(member:isAlive()) then 
-            local hp = member:getCurrentHP()
+            local hp = member:getCurrentHp()
             if (hp < lowHP and hp > 0) then 
                 lowHP = hp
                 lowIndex = i

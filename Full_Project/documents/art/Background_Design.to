@@ -1,0 +1,86 @@
+Backgrounds will follow this order when being generated for a floor
+
+The layers available are:
+
+Sky
+Backgrounds
+Middle
+Forefront
+
+
+
+The universal rules are that apply is that in every background design we will want one area of focus and then 3 supporting items
+
+This means we need this number of combinations of each background layer type
+
+
+
+Sky - 21 styles:
+
+    1. Clear Sky*
+    2. Cloudy Sky
+    3. Celestial Horizon Left*
+    4. Celestial Horizon Center*
+    4. Celestial Left*
+    6. Celestial Center*
+    
+    * = 4 cloud variants
+    - Clear
+    - Few Clouds    (10%)
+    - Cloudy        (25%) 
+    - Mostly Clouds (40%)
+
+
+Background - 4(n) > styles:
+
+    1. Main Center*
+    2. Main Right*
+    3. Minimal Center*
+    4. Minimal Right*
+
+
+Middle - 4(n) > styles:
+
+    1. Main Center*
+    2. Main Right*
+    3. Minimal Center*
+    4. Minimal Right*
+
+Forefront - 4(n) > styles
+
+    1. Main Center*
+    2. Main Right*
+    3. Minimal Center*
+    4. Minimal Right*
+
+    * - n number of Biomes
+    1. Ruins
+    2. Beach
+    3. Desert
+    4. Forest
+    5. Mountains
+
+The reason that we showcase a < symbol is because we want to highlight that some of these assets can be reskinned previous versions as a sand dune can be a grassy hill, or a snow pile
+
+However, we know we have 9 floors to make it to the boss battle: 
+
+What we can do is showcase an order of background to make the approach feel exciting
+
+for example: 
+1. Generic Plain
+2. Generic Plains with Forest BG
+3. Generic Forest
+4. Generic Forest with Mountain BG
+5. Mountain Generic
+6. Mountain with Mountain Castle BG
+7. Castle Mid with Mountain BG
+8. Castle Fore with Mountain
+9. Castle Special Full
+
+then later
+1. Generic Desert (Plain Reskin)
+2. Generic Plains with Beach
+3. Generic Beach
+4. Generic Ocean (Plain Reskin)
+etc. 
+

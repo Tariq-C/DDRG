@@ -1,0 +1,99 @@
+Hero stats are separated into several different factors
+
+The first is the seeded random generation from summoning
+
+Hero Stat Overview:
+
+Heroes will generated with 20 randomized stats. These stats will be used to determine the growth and starting values to be changes and updated overtime. 
+
+The game will shape the hero, but their spawn will be predetermined
+
+Base Stats:
+
+** Based on general stats from observed video games Initial Values
+
+Vit - Vitality
+Str - Strength
+Agi - Dexterity
+Int - Intelligence
+Cha - Charisma
+
+Base Stat Potential:
+
+** Growth values for general stats **
+
+Vit-Pot - Vitality Potential
+Str-Pot - Strength Potential
+Agi-Pot - Agility Potential
+Int-Pot - Intelligence Potential
+Cha-Pot - Charisma Potential
+
+Personality Stats:
+
+** Based on the OCEAN or Big Five personality traits values between -1 and 1 **
+
+OPN - Openness          *Curiosity, Imagination, Creativity, and willingness to try new things*
+CSN - Conscientiousness *Organization, reliability, deiscipline, and goal directed behaviour*
+XTR - Extraversion      *Socialbility, Assertiveness, Energy, and Stimulation Preference*
+AGR - Agreeableness     *Compassion, Kindness, Cooperation, Trust in others*
+NUR - Neuroticism       *Tendancy towards anxiety, moodiness, and emotional reactvity*
+
+Energy Compatibilities:
+
+** Values used to determine the heroes' ability to manipulate an Energy values between **
+
+Mag - Magic     *The power of the magic weave*
+Spr - Spirit    *The power of the spirits of the tower*
+Cos - Cosmic    *The power of the energies of the cosmos*
+Aur - Aura      *The power latent within mortality*
+Div - Divinity  *The power gifted from beyond*
+
+
+
+
+
+
+Hero Potential : 
+
+The characters base stats are distributed by their potential
+
+Character potential ratings 
+| Name           | Rarity / 1024    | Growth Bonus |
+|----------------|------------------|--------------|
+| Celestial Hero |    1 -   1 (001) | 1.0          |
+|----------------|------------------|--------------|
+| Demigod Hero   |    2 -   3 (002) | 0.83         |
+|----------------|------------------|--------------|
+| Ascendant Hero |    4 -   7 (004) | 0.68         |
+|----------------|------------------|--------------|
+| Mythical Hero  |    8 -  15 (008) | 0.54         |
+|----------------|------------------|--------------|
+| Legendary Hero |   16 -  31 (016) | 0.42         |   
+|----------------|------------------|--------------|
+| Renowned Hero  |   32 -  63 (032) | 0.32         |
+|----------------|------------------|--------------|
+| Epic Hero      |   64 - 127 (064) | 0.25         |
+|----------------|------------------|--------------|
+| Notable Hero   |  128 - 255 (128) | 0.18         |
+|----------------|------------------|--------------|
+| Uncommon Hero  |  256 - 511 (256) | 0.13         |
+|----------------|------------------|--------------|
+| Common Hero    |  512 - 1024 (512)| 0.10         |
+|----------------|------------------|--------------|
+
+
+Each level the hero will gain previous_stat  
+
+So while their base stats are flat, they will eventually grow to very high levels
+
+
+The growth of a character is equal to this equation
+
+L = Level
+I = Initial Stat (1 - 10)
+M - Max Stat Value (65536)
+X = Max Level (250)
+P = Potential (0-1)
+
+New Stat (L) = (I / 10) * M * (1 - (1 - (L / X) ^^ (1 + 4*P)))
+

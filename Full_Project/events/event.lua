@@ -22,5 +22,4 @@ function Event:updateStatus(value)
     return true
 end
 
-
 return Event
